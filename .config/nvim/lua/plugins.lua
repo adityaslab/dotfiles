@@ -5,6 +5,7 @@ return require('packer').startup(function()
 
   -- Color scheme
   use { 'sainnhe/gruvbox-material' }
+  use { 'sainnhe/sonokai' }
 
   -- Fuzzy finder
   use {
@@ -16,6 +17,9 @@ return require('packer').startup(function()
   use { 'neovim/nvim-lspconfig' }
   use { 'nvim-lua/completion-nvim' }
 
+  --jdtls LSP
+  use { 'mfussenegger/nvim-jdtls' }
+  
   -- Lua development
   --use { 'tjdevries/nlua.nvim' }
    
@@ -25,6 +29,11 @@ return require('packer').startup(function()
 
   --auto pairs
   use { 'jiangmiao/auto-pairs' }
+  
+  --treesitter
+  use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
+  use {'nvim-treesitter/nvim-treesitter-textobjects'}
+  use { 'nvim-treesitter/playground' }
   
   --galaxyline.nvim
   use { 'glepnir/galaxyline.nvim' }

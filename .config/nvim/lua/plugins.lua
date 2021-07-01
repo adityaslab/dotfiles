@@ -6,6 +6,7 @@ return require('packer').startup(function()
   -- Color scheme
   use { 'sainnhe/gruvbox-material' }
   use { 'sainnhe/sonokai' }
+  use { 'arcticicestudio/nord-vim' }
 
   -- Fuzzy finder
   use {
@@ -16,6 +17,8 @@ return require('packer').startup(function()
   -- LSP and completion
   use { 'neovim/nvim-lspconfig' }
   use { 'nvim-lua/completion-nvim' }
+  use { 'hrsh7th/nvim-compe' }
+  use { 'kabouzeid/nvim-lspinstall' }
 
   --jdtls LSP
   use { 'mfussenegger/nvim-jdtls' }
@@ -26,6 +29,7 @@ return require('packer').startup(function()
   --Nerd tree and commenter
   use { 'preservim/nerdtree' }
   use { 'preservim/nerdcommenter' }
+  use { 'tiagofumo/vim-nerdtree-syntax-highlight' }
 
   --auto pairs
   use { 'jiangmiao/auto-pairs' }
@@ -35,8 +39,11 @@ return require('packer').startup(function()
   use {'nvim-treesitter/nvim-treesitter-textobjects'}
   use { 'nvim-treesitter/playground' }
   
-  --galaxyline.nvim
+  --ui stuff and navigation
   use { 'glepnir/galaxyline.nvim' }
+  use { 'mhinz/vim-startify' }
+  use { 'liuchengxu/vim-which-key' }
+
 
   -- Vim dispatch
   --use { 'tpope/vim-dispatch' }

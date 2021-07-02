@@ -153,6 +153,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/aditya/.local/share/nvim/site/pack/packer/start/vim-nerdtree-syntax-highlight"
   },
+  ["vim-smoothie"] = {
+    loaded = true,
+    path = "/home/aditya/.local/share/nvim/site/pack/packer/start/vim-smoothie"
+  },
   ["vim-startify"] = {
     loaded = true,
     path = "/home/aditya/.local/share/nvim/site/pack/packer/start/vim-startify"

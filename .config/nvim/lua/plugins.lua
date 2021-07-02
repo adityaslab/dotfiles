@@ -43,6 +43,7 @@ return require('packer').startup(function()
   use { 'glepnir/galaxyline.nvim' }
   use { 'mhinz/vim-startify' }
   use { 'liuchengxu/vim-which-key' }
+  use { 'psliwka/vim-smoothie' }
 
 
   -- Vim dispatch

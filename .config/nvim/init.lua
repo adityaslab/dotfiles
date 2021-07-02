@@ -22,11 +22,8 @@ end
 vim.cmd [[packadd packer.nvim]]
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
 
+vim.cmd 'let g:neovide_cursor_antialiasing=v:true'
+
 --LSP
-require('lsp-python')
-
-require('lsp-java')
-
-require('lsp-lua')
-
+require('lsp')
 require('lspinstall')

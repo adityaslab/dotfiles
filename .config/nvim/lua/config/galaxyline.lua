@@ -1,9 +1,11 @@
+--galaxyline theme from https://github.com/ChristianChiarulli/LunarVim
+
 local gl = require('galaxyline')
 -- get my theme in galaxyline repo
 -- local colors = require('galaxyline.theme').default
 local colors = {
-    -- bg = '#2E2E2E',
-    bg = '#292D38',
+    bg = '#2E2E2E',
+    -- bg = '#292D38',
     yellow = '#DCDCAA',
     dark_yellow = '#D7BA7D',
     cyan = '#4EC9B0',
@@ -103,7 +105,7 @@ table.insert(gls.left, {
         highlight = {colors.red, colors.bg}
     }
 })
-print(vim.fn.getbufvar(0, 'ts'))
+-- print(vim.fn.getbufvar(0, 'ts'))
 vim.fn.getbufvar(0, 'ts')
 
 table.insert(gls.left, {
@@ -178,9 +180,38 @@ table.insert(gls.right, {
     }
 })
 
+local get_lsp_client = function (msg)
+    msg = msg or "No Active LSP Client"
+    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+    local clients = vim.lsp.get_active_clients()
+    if next(clients) == nil then
+        return msg
+    end
+    local lsps = ""
+    for _,client in ipairs(clients) do
+        local filetypes = client.config.filetypes
+        if filetypes and vim.fn.index(filetypes, buf_ft) ~=1 then
+            -- print(client.name)
+            if lsps == "" then
+                -- print("first", lsps)
+                lsps = client.name
+            else
+                lsps = lsps .. ", " .. client.name
+                -- print("more", lsps)
+            end
+        end
+    end
+    if lsps == "" then
+        return msg
+    else
+        return lsps
+    end
+end
+
+
 table.insert(gls.right, {
     ShowLspClient = {
-        provider = 'GetLspClient',
+        provider = get_lsp_client,
         condition = function()
             local tbl = {['dashboard'] = true, [' '] = true}
             if tbl[vim.bo.filetype] then return false end
@@ -264,4 +295,5 @@ table.insert(gls.short_line_left, {
 table.insert(gls.short_line_left, {
     SFileName = {provider = 'SFileName', condition = condition.buffer_not_empty, highlight = {colors.grey, colors.bg}}
 })
- 
+
+--table.insert(gls.short_line_right[1] = {BufferIcon = {provider = 'BufferIcon', highlight = {colors.grey, colors.bg}}}) 

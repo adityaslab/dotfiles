@@ -9,7 +9,7 @@
 
 JAR="$HOME/.cache/nvim/nvim_lsp/jdt-language-server-latest/plugins/org.eclipse.equinox.launcher_*.jar"
 #GRADLE_HOME=$HOME/gradle $HOME/.sdkman/candidates/java/current/bin/java \
-GRADLE_HOME=$HOME/gradle /usr/lib/jvm/jre-11-openjdk/bin/java \
+GRADLE_HOME=$HOME/gradle /usr/lib/jvm/java-11-openjdk/bin/java \
   -Declipse.application=org.eclipse.jdt.ls.core.id1 \
   -Dosgi.bundles.defaultStartLevel=4 \
   -Declipse.product=org.eclipse.jdt.ls.core.product \

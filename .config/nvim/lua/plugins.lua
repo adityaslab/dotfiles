@@ -20,11 +20,11 @@ return require('packer').startup(function()
   use { 'hrsh7th/nvim-compe' }
   use { 'kabouzeid/nvim-lspinstall' }
 
+  --dap debugger
+  use { 'mfussenegger/nvim-dap'}
+
   --jdtls LSP
   use { 'mfussenegger/nvim-jdtls' }
-  
-  -- Lua development
-  --use { 'tjdevries/nlua.nvim' }
    
   --Nerd tree and commenter
   use { 'preservim/nerdtree' }
@@ -32,7 +32,11 @@ return require('packer').startup(function()
   use { 'tiagofumo/vim-nerdtree-syntax-highlight' }
 
   --auto pairs
-  use { 'jiangmiao/auto-pairs' }
+  use {"lukas-reineke/indent-blankline.nvim"}
+  use {
+	"windwp/nvim-autopairs"
+	}
+  --use { 'Raimondi/delimitMate' }
   
   --treesitter
   use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
@@ -45,11 +49,13 @@ return require('packer').startup(function()
   use { 'liuchengxu/vim-which-key' }
   use { 'psliwka/vim-smoothie' }
 
-
   -- Vim dispatch
   --use { 'tpope/vim-dispatch' }
 
   -- Fugitive for Git
-  --use { 'tpope/vim-fugitive' }
+  use { 'tpope/vim-fugitive' }
+
+  --Rich presence
+  use { 'andweeb/presence.nvim'}
 
 end)

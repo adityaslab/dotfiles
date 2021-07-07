@@ -34,7 +34,6 @@ require'compe'.setup {
   };
 }
 
-
 local t = function(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
@@ -72,8 +71,8 @@ _G.s_tab_complete = function()
     return t "<S-Tab>"
   end
 end
---these keybinds override tab in insert mode, uncomment if you dont use it
---vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
---vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
---vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
---vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+
+vim.api.nvim_set_keymap("i", "<C-j>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<C-j>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<C-k>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<C-k>", "v:lua.s_tab_complete()", {expr = true})

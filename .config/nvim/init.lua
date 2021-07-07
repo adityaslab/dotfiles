@@ -1,6 +1,6 @@
 --require('lv-galaxyline')
 require('config')
-require('lv-treesitter')
+require('treesitter')
 
 -- Map leader to space key
 vim.g.mapleader = ' '
@@ -21,8 +21,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 vim.cmd [[packadd packer.nvim]]
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
-
-vim.cmd 'let g:neovide_cursor_antialiasing=v:true'
+--vim.cmd 'let g:presence_log_level="debug"'
 
 --LSP
 require('lsp')

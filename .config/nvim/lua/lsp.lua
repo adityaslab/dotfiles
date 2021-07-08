@@ -38,6 +38,25 @@ local on_attach = function(client, bufnr)
 
 end
 
+
+vim.cmd[[
+    nnoremap <A-CR> <Cmd>lua require('jdtls').code_action(require('telescope.themes').get_dropdown({winblend = 10}))<CR>
+    vnoremap <A-CR> <Esc><Cmd>lua require('jdtls').code_action(true)<CR>
+    nnoremap <leader>r <Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>
+    nnoremap <A-o> <Cmd>lua require'jdtls'.organize_imports()<CR>
+    nnoremap crv <Cmd>lua require('jdtls').extract_variable()<CR>
+    vnoremap crv <Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>
+    nnoremap crc <Cmd>lua require('jdtls').extract_constant()<CR>
+    vnoremap crc <Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>
+    vnoremap crm <Esc><Cmd>lua require('jdtls').extract_method(true)<CR>
+
+    command! -buffer JdtCompile lua require('jdtls').compile()
+    command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()
+    command! -buffer JdtJol lua require('jdtls').jol()
+    command! -buffer JdtBytecode lua require('jdtls').javap()
+    command! -buffer JdtJshell lua require('jdtls').jshell()
+]]
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
 local servers = { "pyright" }
@@ -51,11 +70,16 @@ for _, lsp in ipairs(servers) do
 end
 
 --JDTLS
+-- find_root looks for parent directories relative to the current buffer containing one of the given arguments.
+--require('jdtls').start_or_attach({cmd = {'launch_jdtls.sh'}, root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml'})})
+
+local util = require "lspconfig/util"
 require'lspconfig'.jdtls.setup {
     on_attach = on_attach,
     cmd = {"launch_jdtls.sh"},
     filetypes = { "java" },
-    root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml'})
+    root_dir = util.root_pattern { ".git", "build.gradle", "pom.xml" },
+    --root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml'})
     -- init_options = {bundles = bundles}
     -- on_attach = require'lsp'.common_on_attach
 }

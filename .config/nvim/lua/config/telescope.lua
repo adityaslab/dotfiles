@@ -51,6 +51,7 @@ telescope.setup {
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
     mappings = {
       i = {
+        ["<c-d>"] = require("telescope.actions").delete_buffer,
         ["<C-c>"] = actions.close,
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
@@ -80,6 +81,69 @@ telescope.setup {
     },
   },
   extensions = {
+    fzy_native = {
+      override_generic_sorter = false,
+      override_file_sorter = true,
+    },
   },
 }
 
+
+local finders = require'telescope.finders'
+local sorters = require'telescope.sorters'
+local pickers = require'telescope.pickers'
+require('jdtls.ui').pick_one_async = function(items, prompt, label_fn, cb)
+  local opts = {}
+  pickers.new(opts, {
+    prompt_title = prompt,
+    finder    = finders.new_table {
+      results = items,
+      entry_maker = function(entry)
+        return {
+          value = entry,
+          display = label_fn(entry),
+          ordinal = label_fn(entry),
+        }
+      end,
+    },
+    sorter = sorters.get_generic_fuzzy_sorter(),
+    attach_mappings = function(prompt_bufnr)
+      actions.select_default:replace(function()
+        local selection = actions.get_selected_entry(prompt_bufnr)
+        actions.close(prompt_bufnr)
+
+        cb(selection.value)
+      end)
+
+      return true
+    end,
+  }):find()
+end
+
+
+require('telescope').load_extension('fzy_native')
+
+local M = {}
+
+function M.nconf()
+    require('telescope.builtin').file_browser {
+        prompt_title = ' NVim Config Browse',
+        shorten_path = false,
+        cwd = '~/.config/nvim',
+        layout_strategy = 'horizontal',
+        layout_config = {preview_width = 0.65, width = .75}
+    }
+end
+
+function M.browse_code()
+    require('telescope.builtin').find_files {
+        prompt_title = ' Browse ~/Doc/code',
+        shorten_path = false,
+        cwd = '~/Documents/code',
+        layout_strategy = 'horizontal',
+        layout_config = {preview_width = 0.65, width = .75}
+    }
+end
+
+
+return M

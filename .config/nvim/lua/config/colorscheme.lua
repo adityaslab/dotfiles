@@ -9,3 +9,5 @@ cmd[[let g:sonokai_disable_italic_comment = 1]]
 
 cmd 'colorscheme sonokai'
 
+
+--cmd 'colorscheme tokyonight'

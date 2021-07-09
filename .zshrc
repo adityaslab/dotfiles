@@ -56,7 +56,6 @@ ZSH_THEME="agnoster"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
@@ -71,20 +70,33 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
+#vim mode settings
+VI_MODE_SET_CURSOR=true
+
+
+
 plugins=(
     git
     zsh-autosuggestions
     zsh-syntax-highlighting
+    vi-mode
+    dnf
 )
+
 
 #custom aliases
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
 #alias config='vim ~/.config/sway/config'
 alias so="systemctl --user restart pipewire pipewire-pulse"
-alias py="python3"
 alias music="kitty cmus & kitty cava &"
 alias q="exit"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+
+#fuzzyfinding
+alias ff="nvim $(find -type f | fzy)"
+alias fd="cd $(find -type d | fzy)"
+
+
 
 setopt no_nomatch
 
@@ -119,4 +131,4 @@ export EDITOR=nvim
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 eval "$(starship init zsh)"
 
-alias luamake=/home/aditya/.cache/nvim/nlua/sumneko_lua/lua-language-server/3rd/luamake/luamake
+

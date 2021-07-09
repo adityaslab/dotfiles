@@ -28,7 +28,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', opts)
   buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
   buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
+  --buf_set_keymap('n', '<space>ca', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
@@ -38,10 +38,9 @@ local on_attach = function(client, bufnr)
 
 end
 
-
+--nnoremap <A-CR> <Cmd>lua require('jdtls').code_action(require('telescope.themes').get_dropdown())<CR>
+--vnoremap <A-CR> <Esc><Cmd>lua require('jdtls').code_action(true)<CR>
 vim.cmd[[
-    nnoremap <A-CR> <Cmd>lua require('jdtls').code_action(require('telescope.themes').get_dropdown({winblend = 10}))<CR>
-    vnoremap <A-CR> <Esc><Cmd>lua require('jdtls').code_action(true)<CR>
     nnoremap <leader>r <Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>
     nnoremap <A-o> <Cmd>lua require'jdtls'.organize_imports()<CR>
     nnoremap crv <Cmd>lua require('jdtls').extract_variable()<CR>

@@ -6,6 +6,8 @@ local indent = 4
 cmd 'syntax enable'
 cmd 'filetype plugin indent on'
 cmd 'set mouse=a'
+cmd 'set autochdir'
+cmd 'set wildmenu'
 utils.opt('b', 'expandtab', true)
 utils.opt('b', 'shiftwidth', indent)
 utils.opt('b', 'smartindent', true)
@@ -17,7 +19,7 @@ utils.opt('o', 'shiftround', true)
 utils.opt('o', 'smartcase', true)
 utils.opt('o', 'splitbelow', true)
 utils.opt('o', 'splitright', true)
-utils.opt('o', 'wildmode', 'list:longest')
+utils.opt('o', 'wildmode', 'full:full')
 utils.opt('w', 'number', true)
 utils.opt('w', 'relativenumber', true)
 utils.opt('o', 'clipboard','unnamed,unnamedplus')

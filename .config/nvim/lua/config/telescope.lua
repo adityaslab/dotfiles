@@ -36,7 +36,8 @@ telescope.setup {
     file_sorter = require("telescope.sorters").get_fzy_sorter,
     file_ignore_patterns = {},
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-    shorten_path = true,
+    --shorten_path = true,
+    path_display = {'shorten'},
     winblend = 0,
     border = {},
     borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
@@ -128,7 +129,8 @@ local M = {}
 function M.nconf()
     require('telescope.builtin').file_browser {
         prompt_title = ' NVim Config Browse',
-        shorten_path = false,
+        --shorten_path = false,
+        path_display ={'shorten'},
         cwd = '~/.config/nvim',
         layout_strategy = 'horizontal',
         layout_config = {preview_width = 0.65, width = .75}
@@ -138,10 +140,22 @@ end
 function M.browse_code()
     require('telescope.builtin').find_files {
         prompt_title = ' Browse ~/Doc/code',
-        shorten_path = false,
+        --shorten_path = false,
+        path_display = {'shorten'},
         cwd = '~/Documents/code',
-        layout_strategy = 'horizontal',
-        layout_config = {preview_width = 0.65, width = .75}
+        layout_strategy = 'flex',
+        layout_config = {height = 0.7, width = 0.65}
+    }
+end
+
+function M.browse_home()
+    require('telescope.builtin').find_files {
+        prompt_title = ' Browse ~',
+        --shorten_path = false,
+        path_display = {'shorten'},
+        cwd = '~',
+        layout_strategy = 'flex',
+        layout_config = {height = 0.7, width = 0.65}
     }
 end
 

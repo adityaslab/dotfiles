@@ -34,16 +34,18 @@ vim.cmd[[
     nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
     nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
     nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
-    nnoremap <leader>fs <cmd>lua require('telescope.builtin').grep_string()<cr>
 
     nnoremap <leader>fv <cmd>lua require('config.telescope').nconf()<cr>
     nnoremap <leader>fc <cmd>lua require('config.telescope').browse_code()<cr>
+    nnoremap <leader>fh <cmd>lua require('config.telescope').browse_home()<cr>
+
+    nnoremap <A-CR> <cmd>lua require('telescope.builtin').lsp_code_actions(require('telescope.themes').get_ivy({winblend = 10,layout_strategy='bottom_pane',layout_config={height=0.25}}))<cr>
 
 ]]
 
 --nvim tree keybinds
 vim.cmd[[
     nnoremap <C-n> :NvimTreeToggle<CR>
-    nnoremap <leader>r :NvimTreeRefresh<CR>
+    nnoremap <leader>R :NvimTreeRefresh<CR>
     nnoremap <leader>n :NvimTreeFindFile<CR>
 ]]

@@ -4,6 +4,8 @@ local utils = require('utils')
 utils.map('i', 'jk', '<Esc>')
 utils.map('i', 'jj', '<Esc>')
 utils.map('i', 'kj', '<Esc>')
+utils.map('i', '<C>', '<Esc>')
+utils.map('v', '<C>', '<Esc>')
 
 --windows movement
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {silent = true})
@@ -12,7 +14,7 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {silent = true})
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {silent = true})
 
 vim.cmd([[tnoremap <Esc> <C-\><C-n>]])
-vim.cmd 'inoremap { {<CR>}<Esc>ko'
+--vim.cmd 'inoremap { {<CR>}<Esc>ko'
 
 --leader key+ l to toggle highlight
 vim.cmd ([[nnoremap <silent> <leader>l :noh<CR>]])
@@ -27,9 +29,12 @@ vim.api.nvim_set_keymap('n', '<C-r>>', ':vertical resize +5<CR>', {silent = true
 vim.api.nvim_set_keymap("n", "<TAB>", ":bnext<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-TAB>", ":bprevious<CR>", { noremap = true, silent = true })
 
+--terminal
+vim.api.nvim_set_keymap('n','<leader>t',':ToggleTerm<CR>',{silent = true})
 
 --telescope keybinds
 vim.cmd[[ 
+    nnoremap <leader>fd <cmd>lua require('telescope.builtin').file_browser()<cr>
     nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
     nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
     nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
@@ -48,4 +53,7 @@ vim.cmd[[
     nnoremap <C-n> :NvimTreeToggle<CR>
     nnoremap <leader>R :NvimTreeRefresh<CR>
     nnoremap <leader>n :NvimTreeFindFile<CR>
+    tnoremap <silent> <C-i> <C-\><C-n>:RnvimrResize<CR>
+    nnoremap <silent> <C-o> :RnvimrToggle<CR>
+    tnoremap <silent> <C-o> <C-\><C-n>:RnvimrToggle<CR>
 ]]

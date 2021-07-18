@@ -1,4 +1,3 @@
---require('lv-galaxyline')
 require('config')
 require('treesitter')
 
@@ -25,4 +24,3 @@ vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when th
 
 --LSP
 require('lsp')
-require('lspinstall')

@@ -159,6 +159,14 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/aditya/.local/share/nvim/site/pack/packer/start/presence.nvim"
   },
+  rnvimr = {
+    loaded = true,
+    path = "/home/aditya/.local/share/nvim/site/pack/packer/start/rnvimr"
+  },
+  ["scrollbar.nvim"] = {
+    loaded = true,
+    path = "/home/aditya/.local/share/nvim/site/pack/packer/start/scrollbar.nvim"
+  },
   sonokai = {
     loaded = true,
     path = "/home/aditya/.local/share/nvim/site/pack/packer/start/sonokai"
@@ -178,10 +186,6 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/aditya/.local/share/nvim/site/pack/packer/start/vim-fugitive"
-  },
-  ["vim-nerdtree-syntax-highlight"] = {
-    loaded = true,
-    path = "/home/aditya/.local/share/nvim/site/pack/packer/start/vim-nerdtree-syntax-highlight"
   },
   ["vim-smoothie"] = {
     loaded = true,

@@ -32,17 +32,16 @@ return require('packer').startup(function()
   --icons
   use { 'kyazdani42/nvim-web-devicons' }
   use{ 'yamatsum/nvim-nonicons' }
+
+  --tree and commenter
   use {
         'kyazdani42/nvim-tree.lua',
         config = function()
           require("config.nvimtree").config()
         end,
     }
-
-  --Nerd tree and commenter
-  --use { 'preservim/nerdtree' }
   use { 'preservim/nerdcommenter' }
-  use { 'tiagofumo/vim-nerdtree-syntax-highlight' }
+  use { 'kevinhwang91/rnvimr' }
 
   --indent stuff
   use {"lukas-reineke/indent-blankline.nvim"}
@@ -62,6 +61,7 @@ return require('packer').startup(function()
   use { 'liuchengxu/vim-which-key' }
   use { 'psliwka/vim-smoothie' }
   use {'kevinhwang91/nvim-hlslens'}
+  use { 'Xuyuanp/scrollbar.nvim' }
 
   -- Vim dispatch
   --use { 'tpope/vim-dispatch' }

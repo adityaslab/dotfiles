@@ -1,8 +1,3 @@
---require('lsp.java-lsp')
---require('lsp.python-lsp')
---require('lsp.lua-lsp')
-
-
 local nvim_lsp = require('lspconfig')
 
 -- Use an on_attach function to only map the following keys
@@ -34,27 +29,28 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap("n", "<space>fa", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 end
 
 --nnoremap <A-CR> <Cmd>lua require('jdtls').code_action(require('telescope.themes').get_dropdown())<CR>
 --vnoremap <A-CR> <Esc><Cmd>lua require('jdtls').code_action(true)<CR>
-vim.cmd[[
-    nnoremap <leader>r <Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>
-    nnoremap <A-o> <Cmd>lua require'jdtls'.organize_imports()<CR>
-    nnoremap crv <Cmd>lua require('jdtls').extract_variable()<CR>
-    vnoremap crv <Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>
-    nnoremap crc <Cmd>lua require('jdtls').extract_constant()<CR>
-    vnoremap crc <Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>
-    vnoremap crm <Esc><Cmd>lua require('jdtls').extract_method(true)<CR>
 
-    command! -buffer JdtCompile lua require('jdtls').compile()
-    command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()
-    command! -buffer JdtJol lua require('jdtls').jol()
-    command! -buffer JdtBytecode lua require('jdtls').javap()
-    command! -buffer JdtJshell lua require('jdtls').jshell()
-]]
+--vim.cmd[[
+    --nnoremap <leader>r <Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>
+    --nnoremap <A-o> <Cmd>lua require'jdtls'.organize_imports()<CR>
+    --nnoremap crv <Cmd>lua require('jdtls').extract_variable()<CR>
+    --vnoremap crv <Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>
+    --nnoremap crc <Cmd>lua require('jdtls').extract_constant()<CR>
+    --vnoremap crc <Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>
+    --vnoremap crm <Esc><Cmd>lua require('jdtls').extract_method(true)<CR>
+
+    --command! -buffer JdtCompile lua require('jdtls').compile()
+    --command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()
+    --command! -buffer JdtJol lua require('jdtls').jol()
+    --command! -buffer JdtBytecode lua require('jdtls').javap()
+    --command! -buffer JdtJshell lua require('jdtls').jshell()
+--]]
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
@@ -69,15 +65,12 @@ for _, lsp in ipairs(servers) do
 end
 
 --JDTLS
--- find_root looks for parent directories relative to the current buffer containing one of the given arguments.
---require('jdtls').start_or_attach({cmd = {'launch_jdtls.sh'}, root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml'})})
-
 local util = require "lspconfig/util"
 require'lspconfig'.jdtls.setup {
     on_attach = on_attach,
     cmd = {"launch_jdtls.sh"},
     filetypes = { "java" },
-    root_dir = util.root_pattern { ".git", "build.gradle", "pom.xml" },
+    root_dir = util.root_pattern {".git",  "build.gradle", "pom.xml" },
     --root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml'})
     -- init_options = {bundles = bundles}
     -- on_attach = require'lsp'.common_on_attach
@@ -130,4 +123,13 @@ require'lspconfig'.clangd.setup{
     on_attach =on_attach,
 }
 
+
+--rust_analyzer
+require("lspconfig").rust_analyzer.setup {
+  cmd = { "rust-analyzer" },
+  --cmd = { vim.fn.stdpath('data') .. "/lspinstall/rust/rust-analyzer" },
+  on_attach = on_attach,
+  filetypes = { "rust" },
+  root_dir = require("lspconfig.util").root_pattern("Cargo.toml", "rust-project.json" ),
+}
 

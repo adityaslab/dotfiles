@@ -81,21 +81,26 @@ plugins=(
     zsh-syntax-highlighting
     vi-mode
     dnf
+    tmux
 )
 
 
 #custom aliases
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'
-#alias config='vim ~/.config/sway/config'
 alias so="systemctl --user restart pipewire pipewire-pulse"
-alias music="kitty cmus & kitty cava &"
 alias q="exit"
 alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME"
+alias v="nvim"
 
 #fuzzyfinding
-alias ff="nvim $(find -type f | fzy)"
-alias fd="cd $(find -type d | fzy)"
+alias ff='nvim $(find -type f | fzy)'
+alias fd='cd $(find -type d | fzy)'
 
+#lsd aliases
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
 
 setopt no_nomatch
@@ -108,6 +113,7 @@ export EDITOR=nvim
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
+export LC_ALL="en_US.UTF-8"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 

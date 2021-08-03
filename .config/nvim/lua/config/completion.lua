@@ -1,4 +1,4 @@
---this plugin is not in use right now, idk why its here
+--not in use
 local utils = require('utils')utils.opt('o', 'completeopt', 'menuone,noinsert,noselect')
 vim.cmd [[set shortmess+=c]]
 vim.g.completion_confirm_key = ""

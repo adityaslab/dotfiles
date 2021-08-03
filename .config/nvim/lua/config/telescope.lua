@@ -129,7 +129,6 @@ local M = {}
 function M.nconf()
     require('telescope.builtin').file_browser {
         prompt_title = ' NVim Config Browse',
-        --shorten_path = false,
         path_display ={'shorten'},
         cwd = '~/.config/nvim',
         layout_strategy = 'horizontal',
@@ -140,7 +139,6 @@ end
 function M.browse_code()
     require('telescope.builtin').find_files {
         prompt_title = ' Browse ~/Doc/code',
-        --shorten_path = false,
         path_display = {'shorten'},
         cwd = '~/Documents/code',
         layout_strategy = 'flex',
@@ -151,7 +149,6 @@ end
 function M.browse_home()
     require('telescope.builtin').find_files {
         prompt_title = ' Browse ~',
-        --shorten_path = false,
         path_display = {'shorten'},
         cwd = '~',
         layout_strategy = 'flex',

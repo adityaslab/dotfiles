@@ -30,7 +30,7 @@ vim.api.nvim_set_keymap("n", "<TAB>", ":bnext<CR>", { noremap = true, silent = t
 vim.api.nvim_set_keymap("n", "<S-TAB>", ":bprevious<CR>", { noremap = true, silent = true })
 
 --terminal
-vim.api.nvim_set_keymap('n','<leader>t',':ToggleTerm<CR>',{silent = true})
+vim.api.nvim_set_keymap('n','t',':ToggleTerm<CR>',{silent = true})
 
 --telescope keybinds
 vim.cmd[[ 
@@ -53,7 +53,4 @@ vim.cmd[[
     nnoremap <C-n> :NvimTreeToggle<CR>
     nnoremap <leader>R :NvimTreeRefresh<CR>
     nnoremap <leader>n :NvimTreeFindFile<CR>
-    tnoremap <silent> <C-i> <C-\><C-n>:RnvimrResize<CR>
-    nnoremap <silent> <C-o> :RnvimrToggle<CR>
-    tnoremap <silent> <C-o> <C-\><C-n>:RnvimrToggle<CR>
 ]]

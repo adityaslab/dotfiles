@@ -127,9 +127,8 @@ require'lspconfig'.clangd.setup{
 --rust_analyzer
 require("lspconfig").rust_analyzer.setup {
   cmd = { "rust-analyzer" },
-  --cmd = { vim.fn.stdpath('data') .. "/lspinstall/rust/rust-analyzer" },
   on_attach = on_attach,
   filetypes = { "rust" },
-  root_dir = require("lspconfig.util").root_pattern("Cargo.toml", "rust-project.json" ),
+  root_dir = require("lspconfig.util").root_pattern("Cargo.toml", "rust-project.json"),
 }
 

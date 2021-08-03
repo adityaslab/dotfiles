@@ -1,5 +1,6 @@
 require('config')
 require('treesitter')
+require('lsp')
 
 -- Map leader to space key
 vim.g.mapleader = ' '
@@ -22,5 +23,3 @@ vim.cmd [[packadd packer.nvim]]
 vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
 --vim.cmd 'let g:presence_log_level="debug"'
 
---LSP
-require('lsp')

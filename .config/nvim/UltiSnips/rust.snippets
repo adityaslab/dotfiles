@@ -1,0 +1,54 @@
+snippet scan "Fast Scanner" b
+use std::io;
+use std::str;
+
+/// Reads white-space separated tokens one at a time.
+pub struct Scanner<R> {
+    reader: R,
+    buffer: Vec<String>,
+}
+
+impl<R: io::BufRead> Scanner<R> {
+    pub fn new(reader: R) -> Self {
+        Self {
+            reader,
+            buffer: vec![],
+        }
+    }
+
+    /// Use "turbofish" syntax token::<T>() to select data type of next token.
+    ///
+    /// # Panics
+    ///
+    /// Panics if there's an I/O error or if the token cannot be parsed as T.
+    pub fn token<T: str::FromStr>(&mut self) -> T {
+        loop {
+            if let Some(token) = self.buffer.pop() {
+                return token.parse().ok().expect("Failed parse");
+            }
+            let mut input = String::new();
+            self.reader.read_line(&mut input).expect("Failed read");
+            self.buffer = input.split_whitespace().rev().map(String::from).collect();
+        }
+    }
+}
+
+fn main(){
+	let (stdin, stdout) = (io::stdin(), io::stdout());
+    let mut scan = Scanner::new(stdin.lock());
+    let mut out = io::BufWriter::new(stdout.lock());
+
+	let t = scan.token::<usize>();
+}
+endsnippet
+
+
+snippet gcd "/// Fast iterative version of Euclid's GCD algorithm" b
+pub fn fast_gcd(mut a: i64, mut b: i64) -> i64 {
+    while b != 0 {
+        a %= b;
+        std::mem::swap(&mut a, &mut b);
+    }
+    a.abs()
+}
+endsnippet

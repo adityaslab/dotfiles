@@ -19,6 +19,10 @@ return require('packer').startup(function()
   --wild af wildmenu
   use { 'gelguy/wilder.nvim' }
 
+  --snippets
+  use { 'L3MON4D3/LuaSnip' }
+  use { 'SirVer/ultisnips' }
+
   -- LSP and completion
   use { 'neovim/nvim-lspconfig' }
   --use { 'nvim-lua/completion-nvim' }
@@ -62,6 +66,11 @@ return require('packer').startup(function()
   use { 'romgrk/barbar.nvim' }
 
   use { 'liuchengxu/vim-which-key' }
+  use {
+    'AckslD/nvim-whichkey-setup.lua',
+    requires = {'liuchengxu/vim-which-key'},
+}
+
 
   use {'p00f/cphelper.nvim', rocks = 'http', requires = 'nvim-lua/plenary.nvim'}
 

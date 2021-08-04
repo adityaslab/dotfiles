@@ -69,6 +69,10 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  LuaSnip = {
+    loaded = true,
+    path = "/home/aditya/.local/share/nvim/site/pack/packer/start/LuaSnip"
+  },
   ["barbar.nvim"] = {
     loaded = true,
     path = "/home/aditya/.local/share/nvim/site/pack/packer/start/barbar.nvim"
@@ -146,6 +150,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/aditya/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
+  ["nvim-whichkey-setup.lua"] = {
+    loaded = true,
+    path = "/home/aditya/.local/share/nvim/site/pack/packer/start/nvim-whichkey-setup.lua"
+  },
   ["packer.nvim"] = {
     loaded = false,
     needs_bufread = false,
@@ -186,6 +194,10 @@ _G.packer_plugins = {
   ["tokyonight.nvim"] = {
     loaded = true,
     path = "/home/aditya/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
+  },
+  ultisnips = {
+    loaded = true,
+    path = "/home/aditya/.local/share/nvim/site/pack/packer/start/ultisnips"
   },
   ["vim-fugitive"] = {
     loaded = true,
